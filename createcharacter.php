@@ -19,7 +19,7 @@ if (empty($_POST) === false) {
 		}
 		$_POST['name'] = validate_name($_POST['name']);
 		if ($_POST['name'] === false) {
-			$errors[] = 'Your name can not contain more than 2 words.';
+			$errors[] = 'Your name can not contain more than 5 words.';
 		} else {
 			if (user_character_exist($_POST['name']) !== false) {
 				$errors[] = 'Sorry, that character name already exist.';
@@ -87,8 +87,8 @@ if (isset($_GET['success']) && empty($_GET['success'])) {
 		$character_data = array(
 			'name'		=>	format_character_name($_POST['name']),
 			'account_id'=>	$session_user_id,
-			'vocation'	=>	$_POST['selected_vocation'],
-			'town_id'	=>	$_POST['selected_town'],
+			'vocation'	=>	0,
+			'town_id'	=>	1,
 			'sex'		=>	$_POST['selected_gender'],
 			'lastip'	=>	getIPLong(),
 			'created'	=>	time()
@@ -112,15 +112,6 @@ if (isset($_GET['success']) && empty($_GET['success'])) {
 				<input type="text" name="name">
 			</li>
 			<li>
-				<!-- Available vocations to select from when creating character -->
-				Vocation:<br>
-				<select name="selected_vocation">
-				<?php foreach ($config['available_vocations'] as $id) { ?>
-				<option value="<?php echo $id; ?>"><?php echo vocation_id_to_name($id); ?></option>
-				<?php } ?>
-				</select>
-			</li>
-			<li>
 				<!-- Available genders to select from when creating character -->
 				Gender:<br>
 				<select name="selected_gender">
@@ -128,29 +119,6 @@ if (isset($_GET['success']) && empty($_GET['success'])) {
 				<option value="0">Female(girl)</option>
 				</select>
 			</li>
-			<?php
-			$available_towns = $config['available_towns'];
-			if (count($available_towns) > 1):
-				?>
-				<li>
-					<!-- Available towns to select from when creating character -->
-					Town:<br>
-					<select name="selected_town">
-						<?php
-						foreach ($available_towns as $tid):
-							?>
-							<option value="<?php echo $tid; ?>"><?php echo town_id_to_name($tid); ?></option>
-							<?php
-						endforeach;
-						?>
-					</select>
-				</li>
-				<?php
-			else:
-				?>
-				<input type="hidden" name="selected_town" value="<?php echo end($available_towns); ?>">
-				<?php
-			endif;
 
 			/* Form file */
 			Token::create();

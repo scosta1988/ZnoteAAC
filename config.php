@@ -435,14 +435,14 @@
 	// ---------------- \\
 
 	// Max characters on each account:
-	$config['max_characters'] = 7;
+	$config['max_characters'] = 10;
 
 	// Available character vocation users can choose (specify vocation ID).
-	$config['available_vocations'] = array(1, 2, 3, 4);
+	$config['available_vocations'] = array(0, 1, 2, 3, 4);
 
 	// Available towns (specify town ids, etc: (1, 2, 3); to display 3 town options (town id 1, 2 and 3).
 	// Town IDs are the ones from $config['towns'] array
-	$config['available_towns'] = array(6, 7, 8, 9);
+	$config['available_towns'] = array(1);
 
 	$config['player'] = array(
 		'base' => array(
@@ -537,9 +537,9 @@
 	// Minimum allowed letters in character name. Ex: 4 letters: "Kare".
 	$config['minL'] = 3;
 	// Maximum allowed letters in character name. Ex: 20 letters: "Bobkareolesofiesberg"
-	$config['maxL'] = 20;
+	$config['maxL'] = 30;
 	// Maximum allowed words in character name. Ex: 2 words = "Bob Kare", 3 words: "Bob Arne Kare" as maximum char name words.
-	$config['maxW'] = 3;
+	$config['maxW'] = 5;
 
 	// -------------- \\
 	// WEBSITE STUFF  \\
