@@ -19,7 +19,7 @@ if (empty($_POST) === false) {
 		}
 		$_POST['name'] = validate_name($_POST['name']);
 		if ($_POST['name'] === false) {
-			$errors[] = 'Your name can not contain more than 52 words.';
+			$errors[] = 'Your name can not contain more than 5 words.';
 		} else {
 			if (user_character_exist($_POST['name']) !== false) {
 				$errors[] = 'Sorry, that character name already exist.';
